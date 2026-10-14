@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Used Car Price Prediction | Álvaro Mejía</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="../index.html" class="nav-brand">Álvaro Mejía</a>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../projects.html">Projects</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <article class="article">
+
+            <div class="article-header">
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">Data Analysis</span>
+                    <span class="tag">Streamlit</span>
+                    <span class="tag">Scikit-learn</span>
+                </div>
+
+                <h1 class="gradient-text">Used Car Price Prediction</h1>
+
+                <p class="muted">
+                    An end-to-end Data Science project combining data cleaning,
+                    exploratory analysis, feature engineering, model evaluation
+                    and an interactive price prediction application.
+                </p>
+            </div>
+
+            <!-- VIDEO PLACEHOLDER
+                 Add a YouTube embed here when the video is ready.
+            -->
+
+            <div class="article-content">
+
+                <section>
+                    <h2>01. The idea</h2>
+
+                    <p>
+                        How much should a used car cost? The answer depends on
+                        many factors, from its age and mileage to its engine
+                        power and transmission type. This project explores
+                        those relationships and uses Machine Learning to
+                        estimate a car's market price.
+                    </p>
+
+                    <p>
+                        The project started as one of several exercises during
+                        the HACK A BOSS bootcamp and evolved into a more
+                        complete workflow. I worked with a dataset scraped
+                        from Autocasión, cleaned and prepared the data,
+                        compared different regression models, and built a
+                        Streamlit application so users could explore the
+                        dataset and try their own predictions.
+                    </p>
+
+                    <p>
+                        The final application brings together two goals:
+                        understanding the data behind used car prices and
+                        making a trained model accessible through a simple
+                        interface.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>02. From raw data to a model</h2>
+
+                    <p>
+                        The project was developed through a series of
+                        Jupyter notebooks, each covering a different stage
+                        of the Machine Learning workflow.
+                    </p>
+
+                    <h3>Data cleaning and preparation</h3>
+
+                    <p>
+                        The first step was to transform the scraped dataset
+                        into a format suitable for analysis. This involved
+                        handling missing values, removing duplicate records,
+                        translating column names into English and converting
+                        variables to appropriate data types.
+                    </p>
+
+                    <h3>Outlier detection</h3>
+
+                    <p>
+                        I used <strong>Tukey's Fences</strong>, based on the
+                        interquartile range (IQR), to identify potential
+                        outliers in numerical variables. This method was
+                        useful for investigating unusually high or low values
+                        in a dataset with strongly skewed distributions.
+                    </p>
+
+                    <p>
+                        The analysis helped identify where unusual observations
+                        were concentrated and provided a clearer picture of
+                        the data before modelling.
+                    </p>
+
+                    <h3>Encoding and feature engineering</h3>
+
+                    <p>
+                        Machine Learning models require numerical inputs, so
+                        categorical variables were encoded using techniques
+                        such as Label Encoding and One-Hot Encoding. I also
+                        applied logarithmic transformations to highly skewed
+                        variables, including mileage, engine power and price,
+                        where appropriate.
+                    </p>
+
+                    <p>
+                        Missing values were addressed as part of the modelling
+                        workflow using KNN imputation, alongside numerical
+                        scaling and the preparation of model-ready features.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>03. Comparing Machine Learning models</h2>
+
+                    <p>
+                        I evaluated several regression algorithms to determine
+                        which could best predict used car prices. The initial
+                        comparison included Linear Regression, Random Forest,
+                        Decision Tree, K-Nearest Neighbors, AdaBoost and
+                        Gradient Boosting.
+                    </p>
+
+                    <p>
+                        The models were compared using three evaluation metrics:
+                    </p>
+
+                    <ul>
+                        <li>
+                            <strong>MAE (Mean Absolute Error):</strong>
+                            the average absolute difference between predicted
+                            and actual prices, expressed in euros.
+                        </li>
+                        <li>
+                            <strong>RMSE (Root Mean Squared Error):</strong>
+                            a measure that penalises larger prediction errors
+                            more heavily.
+                        </li>
+                        <li>
+                            <strong>R² (Coefficient of Determination):</strong>
+                            an indication of how well the model explains
+                            variation in the target values.
+                        </li>
+                    </ul>
+
+                    <p>
+                        Random Forest performed best in the initial model
+                        comparison. I then explored hyperparameter tuning and
+                        feature importance to improve the modelling workflow
+                        and identify the most relevant vehicle characteristics.
+                    </p>
+
+                    <p>
+                        For the final application, I developed a reduced model
+                        using four features. Its evaluation metrics were:
+                    </p>
+
+                    <ul>
+                        <li><strong>MAE:</strong> €3,125.29</li>
+                        <li><strong>RMSE:</strong> €5,085.46</li>
+                        <li><strong>R²:</strong> 0.82</li>
+                    </ul>
+
+                    <p>
+                        The MAE represents the average absolute prediction
+                        error, while the RMSE penalises larger errors more
+                        heavily. An R² score of 0.82 indicates that the model
+                        explains a substantial proportion of the variation
+                        in prices in the evaluated data.
+                    </p>
+
+                    <p class="code-note">
+                        The model was developed using 50% of the available
+                        dataset because of computational resource limitations.
+                        These metrics should be interpreted in the context
+                        of the data and evaluation setup.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>04. Simplifying the prediction</h2>
+
+                    <p>
+                        The initial modelling workflow considered a broader
+                        set of vehicle characteristics. However, asking users
+                        to provide many technical details would make the
+                        application less convenient to use.
+                    </p>
+
+                    <p>
+                        I therefore developed a reduced model based on four
+                        features identified as important for the prediction
+                        task:
+                    </p>
+
+                    <ul>
+                        <li>
+                            <strong>Car Age:</strong>
+                            the vehicle's age in years.
+                        </li>
+                        <li>
+                            <strong>Transmission:</strong>
+                            manual or automatic.
+                        </li>
+                        <li>
+                            <strong>Power:</strong>
+                            engine power in horsepower (HP).
+                        </li>
+                        <li>
+                            <strong>Mileage:</strong>
+                            distance driven in kilometres.
+                        </li>
+                    </ul>
+
+                    <p>
+                        The prediction function applies logarithmic
+                        transformations to power and mileage, encodes the
+                        transmission type as a binary variable, and converts
+                        the model's predicted log-price back into euros.
+                    </p>
+
+                    <p>
+                        The result is a more practical interface: users can
+                        enter four familiar vehicle characteristics instead
+                        of having to provide a long list of technical
+                        specifications.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>05. The Streamlit application</h2>
+
+                    <p>
+                        I built an interactive web application with Streamlit
+                        and Plotly to make both the exploratory analysis and
+                        the prediction model accessible without having to
+                        run the notebooks manually.
+                    </p>
+
+                    <h3>Explore distributions</h3>
+
+                    <p>
+                        Select a variable to inspect its distribution. For
+                        numerical variables, the application displays
+                        histograms, scatter plots against price, box plots
+                        and descriptive statistics. Categorical variables
+                        can be explored through bar charts.
+                    </p>
+
+                    <p>
+                        Optional colour grouping, or <em>hue</em>, makes it
+                        possible to compare groups within a chart. Advanced
+                        filters let users narrow the dataset by emissions
+                        label, transmission type and body type. Filtered
+                        data can also be downloaded as a CSV file.
+                    </p>
+
+                    <h3>Investigate missing values and outliers</h3>
+
+                    <p>
+                        A dedicated section reports the number and percentage
+                        of missing values for each variable, together with
+                        outlier counts estimated using Tukey's Fence
+                        criterion. This makes it easier to spot data quality
+                        issues and understand how the dataset is distributed.
+                    </p>
+
+                    <h3>Compare correlations</h3>
+
+                    <p>
+                        Users can select numerical variables and inspect their
+                        correlation matrix through an interactive heatmap.
+                        This helps reveal linear relationships between
+                        features and identify patterns worth investigating
+                        further.
+                    </p>
+
+                    <p>
+                        Correlation does not imply causation, but it can
+                        provide useful clues during exploratory data analysis.
+                    </p>
+
+                    <h3>Predict a car's price</h3>
+
+                    <p>
+                        The prediction tab asks for the car's age, transmission,
+                        engine power and mileage. After submitting these
+                        inputs, the application returns the estimated price
+                        in euros.
+                    </p>
+
+                    <p>
+                        Input ranges are provided in the application to help
+                        users stay within the supported values of the model.
+                    </p>
+
+                    <h3>Review the model</h3>
+
+                    <p>
+                        The About section provides background information
+                        about the project and displays the model's evaluation
+                        metrics: an MAE of €3,125.29, an RMSE of €5,085.46
+                        and an R² score of 0.82.
+                    </p>
+
+                    <p>
+                        This gives users some context for interpreting the
+                        predictions rather than treating the estimated price
+                        as an exact valuation.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>06. Technologies and workflow</h2>
+
+                    <p>
+                        The project separates the data analysis workflow
+                        from the reusable functions used to generate charts,
+                        calculate descriptive statistics, detect missing
+                        values and outliers, and run the prediction model.
+                    </p>
+
+                    <ul>
+                        <li>
+                            <strong>Python:</strong>
+                            the main programming language used throughout
+                            the project.
+                        </li>
+                        <li>
+                            <strong>Pandas and NumPy:</strong>
+                            data manipulation and numerical operations.
+                        </li>
+                        <li>
+                            <strong>Scikit-learn:</strong>
+                            regression models, preprocessing and model
+                            evaluation.
+                        </li>
+                        <li>
+                            <strong>Joblib:</strong>
+                            loading the saved prediction model.
+                        </li>
+                        <li>
+                            <strong>Streamlit:</strong>
+                            building the interactive web application.
+                        </li>
+                        <li>
+                            <strong>Plotly:</strong>
+                            creating interactive charts and visualisations.
+                        </li>
+                        <li>
+                            <strong>Jupyter Notebooks:</strong>
+                            organising data cleaning, outlier analysis,
+                            encoding, feature engineering, model comparison
+                            and tuning.
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>07. What I learned</h2>
+
+                    <p>
+                        This project gave me the opportunity to practise the
+                        complete workflow behind a regression problem,
+                        rather than focusing exclusively on model training.
+                        It reinforced the importance of data quality,
+                        preprocessing, feature engineering and evaluating
+                        models with multiple metrics.
+                    </p>
+
+                    <p>
+                        It also highlighted the trade-off between predictive
+                        performance and usability. A model can use many
+                        features, but a simpler input interface can make it
+                        much easier for people to try and understand.
+                    </p>
+
+                    <p>
+                        Building the Streamlit application was another
+                        important part of the experience: it turned the
+                        results of the notebooks into an interactive tool
+                        where users can explore the data, investigate
+                        relationships and test predictions themselves.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>08. Limitations and disclaimer</h2>
+
+                    <p>
+                        This project was developed as a practical learning
+                        exercise. The underlying data was scraped in 2024,
+                        so the model may not reflect current used car market
+                        prices. Vehicle prices can change over time and vary
+                        with condition, location, equipment and other factors
+                        that may not be captured by the four-feature model.
+                    </p>
+
+                    <p>
+                        The model was trained on half of the available dataset
+                        because of computational constraints. Training and
+                        validating with the full dataset, and evaluating
+                        predictions on more recent market data, would be
+                        useful next steps.
+                    </p>
+
+                    <p class="muted">
+                        Predictions are estimates for educational purposes,
+                        not professional valuations or financial advice.
+                        They should not be relied upon as the sole basis
+                        for buying or selling a vehicle.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>09. Future improvements</h2>
+
+                    <p>
+                        There are several ways this project could be taken
+                        further:
+                    </p>
+
+                    <ul>
+                        <li>
+                            <strong>Expand model training:</strong>
+                            use the full dataset and evaluate whether
+                            additional training data improves predictive
+                            performance.
+                        </li>
+                        <li>
+                            <strong>Refresh the data:</strong>
+                            incorporate more recent listings to better reflect
+                            changes in the used car market.
+                        </li>
+                        <li>
+                            <strong>Improve validation:</strong>
+                            test the model on newer, independent data to
+                            assess how well it generalises to current prices.
+                        </li>
+                        <li>
+                            <strong>Explore API integration:</strong>
+                            develop and deploy a REST API with FastAPI to
+                            make price predictions available to other
+                            applications.
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>10. Explore the project</h2>
+
+                    <p>
+                        Try the application to explore the dataset, investigate
+                        variable relationships and estimate the price of a
+                        used car. You can also browse the source code to see
+                        how the data preparation and modelling workflow
+                        was developed.
+                    </p>
+
+                    <div class="actions">
+                        <a
+                            href="https://carpricesprediction-amg.streamlit.app/"
+                            class="btn btn-primary"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Open the app
+                        </a>
+
+                        <a
+                            href="https://github.com/mgalvaro/car_prices_prediction"
+                            class="btn btn-outline"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View code on GitHub
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+
+            <footer class="footer">
+                <p class="muted">
+                    Built with Python, Scikit-learn, Streamlit and Plotly.
+                </p>
+            </footer>
+
+        </article>
+    </main>
+
+</body>
+</html>
+```
