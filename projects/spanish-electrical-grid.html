@@ -2,645 +2,433 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Energy Insights Dashboard | Data Analytics Project</title>
-
-    <meta name="description" content="An interactive dashboard for exploring Spain's electricity system, analyzing historical demand and generation, and experimenting with machine learning forecasting models.">
-
-    <style>
-        .project-article {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 32px 24px 64px;
-            line-height: 1.75;
-        }
-
-        .project-article h1 {
-            line-height: 1.2;
-            margin-bottom: 16px;
-        }
-
-        .project-article h2 {
-            margin-top: 48px;
-            margin-bottom: 16px;
-        }
-
-        .project-article h3 {
-            margin-top: 28px;
-        }
-
-        .project-article .project-intro {
-            font-size: 1.1rem;
-            margin-bottom: 28px;
-        }
-
-        .project-article .project-meta {
-            margin-bottom: 28px;
-            opacity: 0.8;
-            font-size: 0.95rem;
-        }
-
-        .project-article .project-video {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            margin: 28px 0;
-        }
-
-        .project-article .project-video iframe {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-            border-radius: 12px;
-        }
-
-        .project-article .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 20px 0 32px;
-        }
-
-        .project-article .project-tag {
-            display: inline-block;
-            padding: 5px 12px;
-            border: 1px solid currentColor;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
-
-        .project-article .project-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-top: 24px;
-        }
-
-        .project-article .project-links a {
-            display: inline-block;
-            padding: 10px 16px;
-            border: 1px solid currentColor;
-            border-radius: 8px;
-            text-decoration: none;
-        }
-
-        .project-article .project-links a:hover {
-            opacity: 0.75;
-        }
-
-        .project-article .project-note {
-            padding: 16px 20px;
-            border-left: 3px solid currentColor;
-            margin: 24px 0;
-        }
-
-        .project-article .project-metrics {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 0.95rem;
-        }
-
-        .project-article .project-metrics th,
-        .project-article .project-metrics td {
-            text-align: left;
-            padding: 10px 12px;
-            border-bottom: 1px solid #dddddd;
-        }
-
-        .project-article .project-metrics th {
-            font-weight: 600;
-        }
-
-        .project-article .project-steps li {
-            margin-bottom: 10px;
-        }
-
-        .project-article .project-section-number {
-            font-size: 0.85rem;
-            letter-spacing: 0.08em;
-            opacity: 0.7;
-            text-transform: uppercase;
-        }
-
-        .project-article code {
-            overflow-wrap: anywhere;
-        }
-
-        @media (max-width: 600px) {
-            .project-article {
-                padding: 24px 16px 48px;
-            }
-
-            .project-article .project-metrics {
-                font-size: 0.82rem;
-            }
-
-            .project-article .project-metrics th,
-            .project-article .project-metrics td {
-                padding: 8px 6px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0b0f">
+  <meta name="description" content="An interactive dashboard for exploring Spain's electricity system, analyzing historical demand and generation, and experimenting with machine learning forecasting models.">
+  <title>Streamlit Web App Overview - Spanish Electrical Grid Data Visualization and Energy Demand Prediction | Álvaro Mejía</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-
 <body>
 
-<article class="project-article">
+  <header class="navbar">
+    <nav class="container nav-inner" aria-label="Main navigation">
+      <a class="logo" href="../index.html">AM<span>.</span></a>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a class="active" href="../projects.html">Projects</a>
+      </div>
+    </nav>
+  </header>
 
-    <header>
-        <p class="project-section-number">Data Analytics · Machine Learning · Energy</p>
+  <main class="container">
+    <article class="article">
+      <a href="../projects.html">← Back to projects</a>
 
-        <h1>Energy Insights Dashboard</h1>
+      <p>
+        <span class="tag">Data Analytics</span>
+        <span class="tag">Python</span>
+        <span class="tag">Streamlit</span>
+        <span class="tag">Machine Learning</span>
+        <span class="tag">Time Series</span>
+        <span class="tag">Neural Networks</span>
+      </p>
 
-        <p class="project-intro">
-            An interactive exploration of Spain's electricity system, combining
-            historical data analysis, dynamic visualizations and experimental
-            machine learning models to better understand electricity demand
-            and generation.
-        </p>
+      <h1>Energy Insights <span class="gradient-text">Dashboard.</span></h1>
 
-        <div class="project-meta">
-            <span>Final project · Hack a Boss Bootcamp</span>
-        </div>
+      <p>
+        An interactive dashboard for exploring Spain's electricity system,
+        analyzing historical demand and generation, and experimenting with
+        machine learning models to forecast electricity demand.
+      </p>
 
-        <div class="project-tags">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">Streamlit</span>
-            <span class="project-tag">Pandas</span>
-            <span class="project-tag">Plotly</span>
-            <span class="project-tag">SQL</span>
-            <span class="project-tag">Machine Learning</span>
-            <span class="project-tag">Time Series</span>
-        </div>
-    </header>
+      <p class="muted">
+        Hack a Boss bootcamp · Final project · Data analysis and forecasting
+      </p>
 
-    <!-- PROJECT VIDEO -->
+      <h2>Project demo</h2>
+      <p>
+        Watch the project demonstration to see the dashboard and its main
+        features in action.
+      </p>
 
-    <section id="demo">
-        <h2>Project Demo</h2>
+      <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; margin: 1.5rem 0;">
+        <iframe
+          src="https://www.youtube.com/embed/C655JYUN52M"
+          title="Energy Insights Dashboard — Project Demo"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: 12px;">
+        </iframe>
+      </div>
 
-        <p>
-            Watch the project demonstration to see the dashboard and its main
-            features in action.
-        </p>
+      <h2>01. The problem</h2>
+      <p>
+        Electricity demand and generation change over time, influenced by
+        consumption patterns, energy sources and connections between
+        electricity systems. Exploring these changes requires bringing
+        together historical data and clear visualizations.
+      </p>
 
-        <div class="project-video">
-            <iframe
-                src="https://www.youtube.com/embed/C655JYUN52M"
-                title="Energy Insights Dashboard - Project Demo"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen>
-            </iframe>
-        </div>
-    </section>
+      <p>
+        The goal of this project was to build an interactive application
+        that makes Spanish electricity system data easier to explore.
+        Alongside historical analysis, the project investigates whether
+        machine learning models can identify patterns in electricity
+        demand and use them to generate forecasts.
+      </p>
 
-    <!-- 01. THE CHALLENGE -->
+      <h2>02. The dataset</h2>
+      <p>
+        The project uses electricity system data from
+        <a href="https://www.ree.es/en/datos/apidata"
+           target="_blank" rel="noopener noreferrer">
+          Red Eléctrica de España (REE)
+        </a>,
+        the Spanish electricity system operator.
+      </p>
 
-    <section id="challenge">
-        <p class="project-section-number">01 — The Challenge</p>
+      <p>
+        The dashboard focuses on several aspects of the electricity system:
+      </p>
 
-        <h2>Understanding the Spanish Electricity System</h2>
+      <ul>
+        <li>
+          <strong>Electricity demand:</strong> exploring historical demand
+          and changes across selected periods.
+        </li>
+        <li>
+          <strong>Generation by technology:</strong> examining the
+          contribution of different energy sources.
+        </li>
+        <li>
+          <strong>Electricity exchanges:</strong> visualizing exchanges
+          between Spanish regions and neighboring electricity systems.
+        </li>
+        <li>
+          <strong>Annual comparisons:</strong> comparing historical trends
+          and changes between years.
+        </li>
+      </ul>
 
-        <p>
-            Electricity demand and generation change continuously. Understanding
-            these changes requires looking at historical trends, the contribution
-            of different energy sources and the connections between electricity
-            systems.
-        </p>
+      <p>
+        The project also uses a MySQL database to store and organize data
+        for the application. Dedicated Jupyter notebooks handle database
+        creation and population.
+      </p>
 
-        <p>
-            For this bootcamp final project, I worked on an interactive dashboard
-            designed to make Spanish electricity system data easier to explore.
-            The goal was to bring together data analysis and visualization in one
-            application, while also experimenting with time-series forecasting
-            techniques to estimate future electricity demand.
-        </p>
+      <h2>03. Methodology</h2>
 
-        <p>
-            The project combines two main areas: an exploratory analysis of
-            historical electricity data and a machine learning section dedicated
-            to demand forecasting.
-        </p>
-    </section>
+      <h3>Data preparation and storage</h3>
+      <p>
+        Python and Pandas are used to process and organize the data, while
+        MySQL provides the database layer. The workflow connects data
+        preparation and storage with the dashboard used for analysis.
+      </p>
 
-    <!-- 02. THE DATA -->
+      <h3>Interactive visualization</h3>
+      <p>
+        The application is built with Streamlit and Plotly. It includes
+        sections for the main dashboard, data analysis, machine learning
+        and project information. Users can explore demand, compare annual
+        data, inspect generation by technology and view electricity
+        exchanges through interactive visualizations.
+      </p>
 
-    <section id="data">
-        <p class="project-section-number">02 — The Data</p>
+      <h3>Demand forecasting</h3>
+      <p>
+        The machine learning section explores four forecasting approaches:
+      </p>
 
-        <h2>Working with Real-World Energy Data</h2>
+      <ul>
+        <li>
+          <strong>Simple RNN:</strong> a recurrent neural network for
+          learning patterns in sequential data.
+        </li>
+        <li>
+          <strong>LSTM:</strong> a recurrent neural network architecture
+          designed to learn dependencies across time.
+        </li>
+        <li>
+          <strong>GRU:</strong> a recurrent architecture that uses gating
+          mechanisms to model sequential patterns.
+        </li>
+        <li>
+          <strong>Prophet:</strong> a time-series forecasting approach
+          used to generate future demand estimates.
+        </li>
+      </ul>
 
-        <p>
-            The project uses electricity system data from
-            <a href="https://www.ree.es/en/datos/apidata"
-               target="_blank"
-               rel="noopener noreferrer">Red Eléctrica de España (REE)</a>,
-            the Spanish electricity system operator. The data provides the basis
-            for exploring historical demand, electricity generation and exchanges
-            between regions and neighboring systems.
-        </p>
+      <p>
+        The application allows users to explore forecasts over horizons
+        of 7, 15 or 30 days. The recurrent models include two prediction
+        strategies:
+      </p>
 
-        <p>
-            The application brings together several perspectives on the
-            electricity system:
-        </p>
+      <ul>
+        <li>
+          <strong>One-step forecasting:</strong> predicting an observation
+          from a historical input window.
+        </li>
+        <li>
+          <strong>Recursive multi-step forecasting:</strong> generating
+          successive predictions by feeding previous predictions back
+          into the forecasting process.
+        </li>
+      </ul>
 
-        <ul>
-            <li>
-                <strong>Electricity demand:</strong> exploring how demand changes
-                over time and across selected periods.
-            </li>
-            <li>
-                <strong>Generation by technology:</strong> examining the
-                contribution of different energy sources to electricity generation.
-            </li>
-            <li>
-                <strong>Electricity exchanges:</strong> visualizing exchanges
-                between regions and with neighboring countries.
-            </li>
-            <li>
-                <strong>Historical comparisons:</strong> comparing annual trends
-                and changes in the electricity system.
-            </li>
-        </ul>
+      <p>
+        Model evaluation includes the coefficient of determination (R²),
+        mean absolute error (MAE) and root mean squared error (RMSE).
+        These metrics help examine prediction quality and compare
+        forecasting experiments.
+      </p>
 
-        <p>
-            The project also uses a MySQL database to store and organize the
-            data used by the application. Database creation and population are
-            handled through dedicated Jupyter notebooks.
-        </p>
-    </section>
+      <h2>04. Results</h2>
+      <p>
+        The final application combines historical electricity analysis
+        with demand forecasting experiments. It provides a way to explore
+        the electricity system interactively and investigate how different
+        models behave when predicting future demand.
+      </p>
 
-    <!-- 03. THE APPROACH -->
+      <p>
+        The recorded recurrent-model metrics are shown below. The
+        one-step and recursive multi-step results are presented separately
+        because they represent different forecasting strategies.
+      </p>
 
-    <section id="methodology">
-        <p class="project-section-number">03 — The Approach</p>
+      <h3>Recurrent model experiments</h3>
 
-        <h2>From Data Preparation to Interactive Exploration</h2>
-
-        <h3>Data preparation and storage</h3>
-
-        <p>
-            The workflow combines data retrieval, preparation and storage before
-            presenting the information through the dashboard. Python and Pandas
-            support data manipulation, while MySQL provides the database layer.
-            This structure separates data preparation from the interactive
-            interface.
-        </p>
-
-        <h3>Interactive data visualization</h3>
-
-        <p>
-            The dashboard is built with Streamlit and Plotly. Users can explore
-            electricity demand, compare annual data, inspect generation by
-            technology and visualize electricity exchanges through interactive
-            charts and maps.
-        </p>
-
-        <p>
-            The application is organized into sections for the main dashboard,
-            data analysis, machine learning and project information. This makes
-            it possible to move from understanding historical patterns to
-            exploring forecasting experiments within the same interface.
-        </p>
-
-        <h3>Experimenting with forecasting models</h3>
-
-        <p>
-            The machine learning section explores four approaches to time-series
-            forecasting:
-        </p>
-
-        <ul>
-            <li>
-                <strong>Simple RNN:</strong> a recurrent neural network used to
-                learn patterns from sequential data.
-            </li>
-            <li>
-                <strong>LSTM:</strong> a recurrent neural network architecture
-                designed to learn longer-term dependencies in sequences.
-            </li>
-            <li>
-                <strong>GRU:</strong> another recurrent architecture that uses
-                gating mechanisms to model sequential patterns.
-            </li>
-            <li>
-                <strong>Prophet:</strong> a forecasting approach designed for
-                time series, used here to generate future demand estimates.
-            </li>
-        </ul>
-
-        <p>
-            The dashboard allows users to explore forecasts over different
-            horizons, including 7, 15 and 30 days. The recurrent models also
-            distinguish between two prediction strategies.
-        </p>
-
-        <p>
-            <strong>One-step forecasting</strong> predicts an observation from
-            a historical input window. <strong>Recursive multi-step forecasting</strong>
-            generates successive predictions by feeding earlier predictions
-            back into the forecasting process. This distinction matters because
-            errors can accumulate as the forecast horizon increases.
-        </p>
-
-        <p>
-            Model performance is explored using metrics such as the coefficient
-            of determination (R²), mean absolute error (MAE) and root mean
-            squared error (RMSE).
-        </p>
-    </section>
-
-    <!-- 04. RESULTS -->
-
-    <section id="results">
-        <p class="project-section-number">04 — Results</p>
-
-        <h2>Exploration, Forecasting and Model Evaluation</h2>
-
-        <p>
-            The final application brings together interactive historical analysis
-            and demand forecasting experiments in a single dashboard. It provides
-            different ways to explore the electricity system, compare periods
-            and technologies, and inspect model-generated demand estimates.
-        </p>
-
-        <p>
-            The experiments also illustrate that forecasting performance depends
-            on the model and the prediction strategy. Predicting the next
-            observation and recursively forecasting several steps ahead are
-            different tasks, and their metrics should be interpreted separately.
-        </p>
-
-        <h3>Selected experimental metrics</h3>
-
-        <p>
-            The following values are taken from the project's recorded model
-            metrics. They are presented as experimental results rather than
-            as a definitive ranking, because the evaluation and scaling
-            procedures have not been fully verified as identical across models.
-        </p>
-
-        <h3>Recurrent neural networks</h3>
-
-        <table class="project-metrics">
-            <thead>
-                <tr>
-                    <th>Model</th>
-                    <th>Prediction strategy</th>
-                    <th>R²</th>
-                    <th>MAE (GWh)</th>
-                    <th>RMSE (GWh)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>RNN</td>
-                    <td>One-step</td>
-                    <td>0.40</td>
-                    <td>34.53</td>
-                    <td>42.39</td>
-                </tr>
-                <tr>
-                    <td>RNN</td>
-                    <td>Recursive multi-step</td>
-                    <td>-25.90</td>
-                    <td>61.52</td>
-                    <td>75.85</td>
-                </tr>
-                <tr>
-                    <td>LSTM</td>
-                    <td>One-step</td>
-                    <td>0.31</td>
-                    <td>34.68</td>
-                    <td>41.67</td>
-                </tr>
-                <tr>
-                    <td>LSTM</td>
-                    <td>Recursive multi-step</td>
-                    <td>-143.24</td>
-                    <td>63.68</td>
-                    <td>78.53</td>
-                </tr>
-                <tr>
-                    <td>GRU</td>
-                    <td>One-step</td>
-                    <td>0.784</td>
-                    <td>12.89</td>
-                    <td>15.77</td>
-                </tr>
-                <tr>
-                    <td>GRU</td>
-                    <td>Recursive multi-step</td>
-                    <td>0.305</td>
-                    <td>22.30</td>
-                    <td>28.28</td>
-                </tr>
-            </tbody>
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Strategy</th>
+              <th>R²</th>
+              <th>MAE (GWh)</th>
+              <th>RMSE (GWh)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>RNN</td>
+              <td>One-step</td>
+              <td>0.400</td>
+              <td>34.53</td>
+              <td>42.39</td>
+            </tr>
+            <tr>
+              <td>RNN</td>
+              <td>Multi-step</td>
+              <td>-25.900</td>
+              <td>61.52</td>
+              <td>75.85</td>
+            </tr>
+            <tr>
+              <td>LSTM</td>
+              <td>One-step</td>
+              <td>0.310</td>
+              <td>34.68</td>
+              <td>41.67</td>
+            </tr>
+            <tr>
+              <td>LSTM</td>
+              <td>Multi-step</td>
+              <td>-143.240</td>
+              <td>63.68</td>
+              <td>78.53</td>
+            </tr>
+            <tr>
+              <td>GRU</td>
+              <td>One-step</td>
+              <td>0.784</td>
+              <td>12.89</td>
+              <td>15.77</td>
+            </tr>
+            <tr>
+              <td>GRU</td>
+              <td>Multi-step</td>
+              <td>0.305</td>
+              <td>22.30</td>
+              <td>28.28</td>
+            </tr>
+          </tbody>
         </table>
+      </div>
 
-        <p>
-            In the recorded experiments, the GRU one-step results show lower
-            errors than the listed RNN and LSTM one-step results. The recursive
-            multi-step results also show how performance can deteriorate when
-            predictions are generated sequentially.
-        </p>
+      <p>
+        In these recorded experiments, the GRU one-step configuration
+        has the lowest MAE and RMSE among the listed recurrent-model
+        results. The multi-step experiments show a different pattern:
+        performance declines for all three architectures, particularly
+        in the recorded RNN and LSTM results.
+      </p>
 
-        <p>
-            The strongly negative R² values recorded for the RNN and LSTM
-            multi-step experiments indicate poor performance relative to a
-            simple baseline based on the mean of the evaluated target values.
-            These results are useful reminders that a model that produces
-            reasonable short-term predictions may behave very differently
-            over a recursive forecast.
-        </p>
+      <p>
+        Negative R² values indicate that the predictions performed worse
+        than a baseline that predicts the mean of the evaluated target
+        values. They highlight the difficulty of recursive forecasting
+        and the importance of validating the prediction process.
+      </p>
 
-        <div class="project-note">
-            <strong>Evaluation note:</strong> these metrics reflect the project's
-            recorded experiments. The available code does not establish that
-            every model was evaluated on an identical target scale and test
-            procedure. In particular, the recursive implementations and the
-            Prophet evaluation require further verification before a direct
-            cross-model ranking can be considered reliable.
-        </div>
+      <h3>Prophet experiment</h3>
+      <p>
+        The project also records metrics for two Prophet configurations.
+        Their original labels, “con” and “sin”, are retained here because
+        the available code does not establish exactly what those labels
+        represent.
+      </p>
 
-        <h3>Prophet experiment</h3>
-
-        <p>
-            Two Prophet metric configurations were recorded in the project:
-        </p>
-
-        <table class="project-metrics">
-            <thead>
-                <tr>
-                    <th>Configuration</th>
-                    <th>R²</th>
-                    <th>Recorded MAE</th>
-                    <th>Recorded RMSE</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>con</td>
-                    <td>0.8294</td>
-                    <td>0.0512</td>
-                    <td>0.0682</td>
-                </tr>
-                <tr>
-                    <td>sin</td>
-                    <td>0.7727</td>
-                    <td>0.0567</td>
-                    <td>0.0787</td>
-                </tr>
-            </tbody>
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Configuration</th>
+              <th>R²</th>
+              <th>Recorded MAE</th>
+              <th>Recorded RMSE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>con</td>
+              <td>0.8294</td>
+              <td>0.0512</td>
+              <td>0.0682</td>
+            </tr>
+            <tr>
+              <td>sin</td>
+              <td>0.7727</td>
+              <td>0.0567</td>
+              <td>0.0787</td>
+            </tr>
+          </tbody>
         </table>
+      </div>
 
+      <div class="code-note">
+        <strong>Interpreting the results</strong>
         <p>
-            The configuration labelled “con” has the higher recorded R² and
-            lower recorded MAE and RMSE. However, the available implementation
-            does not establish what the “con” and “sin” labels represent, nor
-            does it confirm that these errors use the same scale as the
-            recurrent-model metrics. For that reason, the Prophet values are
-            reported separately and are not directly compared with the errors
-            expressed in GWh above.
+          These values are reported as experimental results, not as a
+          definitive ranking across all models. The available code does
+          not establish that every model uses the same test procedure
+          and target scale. The Prophet error values are therefore kept
+          separate from the recurrent-model errors expressed in GWh.
+          The recursive implementations also require further validation
+          before drawing strong conclusions from their multi-step metrics.
         </p>
-    </section>
+      </div>
 
-    <!-- 05. WHAT I LEARNED -->
+      <h2>05. What I learned</h2>
+      <p>
+        This project gave me practical experience connecting several
+        stages of a data workflow, from database preparation to
+        visualization and machine learning experimentation.
+      </p>
 
-    <section id="learnings">
-        <p class="project-section-number">05 — What I Learned</p>
+      <ul>
+        <li>
+          <strong>Data preparation:</strong> organizing real-world data
+          for analysis and use in an application.
+        </li>
+        <li>
+          <strong>Database integration:</strong> using MySQL as part of
+          a Python-based data workflow.
+        </li>
+        <li>
+          <strong>Data visualization:</strong> building interactive charts
+          and maps that make historical patterns easier to explore.
+        </li>
+        <li>
+          <strong>Time-series forecasting:</strong> experimenting with
+          recurrent neural networks and Prophet.
+        </li>
+        <li>
+          <strong>Model evaluation:</strong> using R², MAE and RMSE to
+          investigate model performance.
+        </li>
+        <li>
+          <strong>Critical evaluation:</strong> recognizing that different
+          forecasting strategies can produce very different results and
+          that metrics need consistent evaluation procedures to be
+          meaningfully compared.
+        </li>
+      </ul>
 
-        <h2>Key Takeaways</h2>
+      <p>
+        An important takeaway was that building a forecasting model is
+        only one part of the process. Understanding how the data is
+        prepared, how predictions are generated and how performance is
+        measured is equally important.
+      </p>
 
-        <ul class="project-steps">
-            <li>
-                <strong>Working with real-world data:</strong> gaining practical
-                experience preparing and organizing energy-system data for
-                analysis.
-            </li>
-            <li>
-                <strong>Building data applications:</strong> connecting a database,
-                data processing and interactive visualizations in a Streamlit
-                application.
-            </li>
-            <li>
-                <strong>Exploratory data analysis:</strong> using historical
-                comparisons, interactive charts and maps to investigate
-                electricity demand, generation and exchanges.
-            </li>
-            <li>
-                <strong>Exploring time-series models:</strong> working with
-                recurrent neural networks and Prophet to investigate different
-                approaches to demand forecasting.
-            </li>
-            <li>
-                <strong>Evaluating model performance:</strong> using R², MAE
-                and RMSE to examine predictions and recognize the importance
-                of consistent evaluation procedures.
-            </li>
-            <li>
-                <strong>Understanding forecasting limitations:</strong> learning
-                that recursive predictions can behave differently from
-                one-step predictions, and that reliable comparisons require
-                careful validation of the data pipeline and evaluation setup.
-            </li>
-        </ul>
+      <h2>06. Technologies</h2>
+      <ul>
+        <li><strong>Python:</strong> core programming language.</li>
+        <li><strong>Pandas and NumPy:</strong> data manipulation and numerical operations.</li>
+        <li><strong>MySQL and SQL:</strong> database storage and querying.</li>
+        <li><strong>Streamlit:</strong> interactive web application.</li>
+        <li><strong>Plotly:</strong> interactive charts and visualizations.</li>
+        <li><strong>Scikit-learn:</strong> preprocessing and evaluation metrics.</li>
+        <li><strong>TensorFlow / Keras:</strong> recurrent neural network models.</li>
+        <li><strong>Prophet:</strong> time-series forecasting experiments.</li>
+        <li><strong>REE API:</strong> Spanish electricity system data source.</li>
+        <li><strong>Jupyter Notebook:</strong> database setup and preparation workflow.</li>
+      </ul>
 
-        <p>
-            This project gave me the opportunity to connect several stages of
-            a data workflow, from database preparation and exploratory analysis
-            to interactive reporting and machine learning experimentation.
-        </p>
-    </section>
+      <h2>07. Explore the project</h2>
+      <p>
+        Explore the source code, database setup notebooks and application
+        structure in the GitHub repository. You can also open the deployed
+        Streamlit app, if available, to interact with the dashboard.
+      </p>
 
-    <!-- 06. TECHNOLOGIES -->
+      <div class="actions">
+        <a class="btn btn-primary"
+           href="https://github.com/mgalvaro/PFB_red_electrica/tree/main"
+           target="_blank" rel="noopener noreferrer">
+          View code on GitHub ↗
+        </a>
+        <a class="btn btn-outline"
+           href="https://pfbredelectrica.streamlit.app/"
+           target="_blank" rel="noopener noreferrer">
+          Open dashboard ↗
+        </a>
+        <a class="btn btn-outline"
+           href="https://www.ree.es/en/datos/apidata"
+           target="_blank" rel="noopener noreferrer">
+          REE API ↗
+        </a>
+      </div>
 
-    <section id="technologies">
-        <p class="project-section-number">06 — Technologies</p>
+      <p>
+        To run the application locally, follow the setup instructions
+        in the repository README. The documented workflow includes
+        preparing and populating the MySQL database before launching
+        Streamlit.
+      </p>
 
-        <h2>Tools and Technologies</h2>
-
-        <ul>
-            <li><strong>Python:</strong> main programming language.</li>
-            <li><strong>Pandas and NumPy:</strong> data manipulation and numerical operations.</li>
-            <li><strong>MySQL and SQL:</strong> data storage and querying.</li>
-            <li><strong>Streamlit:</strong> interactive web application.</li>
-            <li><strong>Plotly:</strong> interactive charts and visualizations.</li>
-            <li><strong>Scikit-learn:</strong> data preprocessing and evaluation metrics.</li>
-            <li><strong>TensorFlow / Keras:</strong> implementation of recurrent neural network models.</li>
-            <li><strong>Prophet:</strong> time-series forecasting experiments.</li>
-            <li><strong>REE API:</strong> source of Spanish electricity system data.</li>
-            <li><strong>Jupyter Notebook:</strong> database setup and data preparation workflows.</li>
-        </ul>
-    </section>
-
-    <!-- 07. EXPLORE THE PROJECT -->
-
-    <section id="project-links">
-        <p class="project-section-number">07 — Explore the Project</p>
-
-        <h2>Explore the Dashboard and Source Code</h2>
-
-        <p>
-            The project combines an interactive interface with the code and
-            data-preparation workflow behind it. Explore the repository for
-            implementation details, or use the dashboard to navigate the
-            available analysis and forecasting sections.
-        </p>
-
-        <div class="project-links">
-            <a href="https://github.com/mgalvaro/PFB_red_electrica/tree/main"
-               target="_blank"
-               rel="noopener noreferrer">
-                View GitHub Repository
-            </a>
-
-            <a href="https://pfbredelectrica.streamlit.app/"
-               target="_blank"
-               rel="noopener noreferrer">
-                Open Streamlit App
-            </a>
-
-            <a href="https://www.ree.es/en/datos/apidata"
-               target="_blank"
-               rel="noopener noreferrer">
-                Explore REE API
-            </a>
-        </div>
-
-        <p>
-            To run the application locally, follow the setup instructions in
-            the repository README. The documented workflow includes preparing
-            and populating the MySQL database before launching the Streamlit
-            application.
-        </p>
-
-        <pre><code>cd StreamlitApp
+      <pre><code>cd StreamlitApp
 streamlit run main.py</code></pre>
 
-        <p>
-            The database setup notebooks and required configuration should be
-            reviewed before running the application in a new environment.
-        </p>
-    </section>
+      <p class="muted">
+        Final project · Hack a Boss bootcamp
+      </p>
 
-    <footer>
-        <p>
-            <strong>Energy Insights Dashboard</strong> — A data analytics and
-            machine learning project developed as the final project of the
-            Hack a Boss bootcamp.
-        </p>
-    </footer>
+    </article>
+  </main>
 
-</article>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© 2026 Álvaro Mejía</span>
+      <a href="../index.html">Back home ↑</a>
+    </div>
+  </footer>
 
 </body>
 </html>
