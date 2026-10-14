@@ -256,15 +256,28 @@
               <td>22.30</td>
               <td>28.28</td>
             </tr>
+            <tr>
+              <td>Propheth</td>
+              <td>One-step</td>
+              <td>0.7727</td>
+              <td>0.0567</td>
+              <td>0.0787</td>
+            </tr>
+            <tr>
+              <td>Propheth</td>
+              <td>Multi-step</td>
+              <td>0.8294</td>
+              <td>0.0512</td>
+              <td>0.0682</td>
+            </tr>
           </tbody>
         </table>
       </div>
 
       <p>
-        In these recorded experiments, the GRU one-step configuration
-        has the lowest MAE and RMSE among the listed recurrent-model
-        results. The multi-step experiments show a different pattern:
-        performance declines for all three architectures, particularly
+        In these recorded experiments, the Meta Propheth algorithm got the bets metrics
+        followed by the the GRU one-step configuration. The multi-step experiments show a different pattern:
+        performance declines for all architectures except for Propheth, particularly
         in the recorded RNN and LSTM results.
       </p>
 
@@ -275,51 +288,11 @@
         and the importance of validating the prediction process.
       </p>
 
-      <h3>Prophet experiment</h3>
-      <p>
-        The project also records metrics for two Prophet configurations.
-        Their original labels, “con” and “sin”, are retained here because
-        the available code does not establish exactly what those labels
-        represent.
-      </p>
-
-      <div style="overflow-x: auto;">
-        <table>
-          <thead>
-            <tr>
-              <th>Configuration</th>
-              <th>R²</th>
-              <th>Recorded MAE</th>
-              <th>Recorded RMSE</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>con</td>
-              <td>0.8294</td>
-              <td>0.0512</td>
-              <td>0.0682</td>
-            </tr>
-            <tr>
-              <td>sin</td>
-              <td>0.7727</td>
-              <td>0.0567</td>
-              <td>0.0787</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
       <div class="code-note">
         <strong>Interpreting the results</strong>
         <p>
           These values are reported as experimental results, not as a
-          definitive ranking across all models. The available code does
-          not establish that every model uses the same test procedure
-          and target scale. The Prophet error values are therefore kept
-          separate from the recurrent-model errors expressed in GWh.
-          The recursive implementations also require further validation
-          before drawing strong conclusions from their multi-step metrics.
+          definitive ranking across all models.
         </p>
       </div>
 
@@ -344,7 +317,12 @@
           and maps that make historical patterns easier to explore.
         </li>
         <li>
-          <strong>Time-series forecasting:</strong> experimenting with
+          <strong>Machine Learning process:</strong> the need of properly preparing the data
+          using feature engineering (using circular encoding for days, months and years,
+          scaling data, and normalize) before train and test the dataset.
+        </li>
+        <li>
+          <strong>Time-series forecasting:</strong> experimenting with Keras using
           recurrent neural networks and Prophet.
         </li>
         <li>
@@ -411,9 +389,6 @@
         preparing and populating the MySQL database before launching
         Streamlit.
       </p>
-
-      <pre><code>cd StreamlitApp
-streamlit run main.py</code></pre>
 
       <p class="muted">
         Final project · Hack a Boss bootcamp
