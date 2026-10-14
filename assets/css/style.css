@@ -362,6 +362,18 @@ h1, h2, h3 {
   gap: 16px;
 }
 
+.centered-image {
+  text-align: center;   /* Centers the image and the text inside the container */
+  margin: 20px auto;    /* Adds space above/below and centers the block container */
+}
+
+.centered-image img {
+  max-width: 100%;      /* Ensures the image is responsive and doesn't overflow */
+  height: auto;
+  display: inline-block; 
+}
+
+
 /* Responsive layout */
 
 @media (max-width: 700px) {
