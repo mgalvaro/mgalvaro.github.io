@@ -1,0 +1,245 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0b0f">
+  <meta name="description" content="A small Tamagotchi game built with Python and Streamlit to practice object-oriented programming and interactive application logic.">
+  <title>Tamagotchi Game | Álvaro Mejía</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <nav class="container nav-inner" aria-label="Main navigation">
+      <a class="logo" href="../index.html">AM<span>.</span></a>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a class="active" href="../projects.html">Projects</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <article class="article">
+      <a href="../projects.html">← Back to projects</a>
+
+      <p>
+        <span class="tag">Python</span>
+        <span class="tag">Object-Oriented Programming</span>
+        <span class="tag">Streamlit</span>
+        <span class="tag">Game Development</span>
+      </p>
+
+      <h1>Tamagotchi <span class="gradient-text">Game.</span></h1>
+
+      <p>
+        A small virtual pet game built with Python and Streamlit to practice
+        object-oriented programming. Feed your pet, play with it, give it a
+        bath and help it sleep. Just don't let its needs get out of control!
+      </p>
+
+      <p class="muted">
+        Personal practice project · Python · Object-oriented programming
+      </p>
+
+      <h2>Project demo</h2>
+      <p>
+        Here's a short video showing the game in action.
+      </p>
+
+      <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; margin: 1.5rem 0;">
+        <iframe
+          src="https://www.youtube.com/embed/_BnrznyeP9s"
+          title="Tamagotchi Game — Demo"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: 12px;">
+        </iframe>
+      </div>
+
+      <h2>01. The idea</h2>
+      <p>
+        I built this project as a way to practice writing Python code using
+        classes and objects. Rather than working only with isolated functions,
+        I wanted to create something interactive where an object's state
+        changes depending on what the user does.
+      </p>
+
+      <p>
+        The result is a simple Tamagotchi-style game. You create a pet, give
+        it a name, choose a difficulty level and try to keep it alive by
+        managing its needs. The rules are straightforward, but neglecting
+        your pet for too long can lead to a very dramatic game over.
+      </p>
+
+      <h2>02. How to play</h2>
+      <p>
+        Your pet has four main needs: hunger, boredom, tiredness and dirtiness.
+        Each action affects these values, so keeping your pet alive means
+        choosing the right action at the right time.
+      </p>
+
+      <ul>
+        <li>
+          <strong>🍽️ Eat:</strong> use an available meal to reduce hunger.
+        </li>
+        <li>
+          <strong>🎮 Play:</strong> play rock-paper-scissors to reduce boredom.
+          Your pet chooses its move randomly, so you might win, lose or draw.
+        </li>
+        <li>
+          <strong>😴 Sleep:</strong> reduce tiredness and boredom while your
+          pet rests.
+        </li>
+        <li>
+          <strong>🛁 Bath:</strong> clean your pet and reset its dirtiness.
+        </li>
+        <li>
+          <strong>🍖 Search for food:</strong> find a random number of meals,
+          although going out also makes your pet dirtier.
+        </li>
+      </ul>
+
+      <p>
+        You can also choose the difficulty level, which controls how quickly
+        your pet's needs increase. If any of the four main needs reaches 10,
+        the game ends. A little bit of planning goes a long way!
+      </p>
+
+      <h2>03. How it works</h2>
+
+      <h3>The Tamagotchi class</h3>
+      <p>
+        The main part of the project is the <code>Tamagotchi</code> class.
+        Each pet is an object with its own name, hunger, boredom, tiredness,
+        dirtiness, food supply and sleep status.
+      </p>
+
+      <p>
+        Instead of handling every action separately in the main application,
+        the class contains methods that define how the pet behaves. Methods
+        such as <code>eat()</code>, <code>play()</code>, <code>sleeping()</code>,
+        <code>bath()</code> and <code>search_food()</code> update the pet's
+        attributes according to the game's rules.
+      </p>
+
+      <p>
+        The class also handles difficulty and checks whether the pet has
+        reached a game-over condition. This was a useful way to practice
+        keeping related data and behavior together in one object.
+      </p>
+
+      <h3>Streamlit and session state</h3>
+      <p>
+        Streamlit provides the user interface, including the action buttons,
+        messages, images and status visualizations. The pet's object is stored
+        in <code>st.session_state</code>, allowing its state to persist across
+        Streamlit reruns during the game.
+      </p>
+
+      <p>
+        I also use session state to manage game messages, the current
+        rock-paper-scissors interaction and a history of the pet's parameters.
+        This lets the interface respond to each action while keeping track
+        of what has happened.
+      </p>
+
+      <h3>A visual pet status</h3>
+      <p>
+        The interface changes depending on the pet's condition. Different
+        images represent a happy, sad, sleeping or playing pet, while a bar
+        chart displays the current values of its four needs.
+      </p>
+
+      <p>
+        As the game progresses, the application records changes in hunger,
+        boredom, tiredness and dirtiness and displays their evolution in a
+        line chart. This adds a simple data-visualization element to the game
+        and makes the effects of each action easier to follow.
+      </p>
+
+      <h2>04. What I learned</h2>
+      <p>
+        This was a small project, but it gave me a practical way to apply
+        Python concepts in an application that reacts to user input.
+      </p>
+
+      <ul>
+        <li>
+          <strong>Object-oriented programming:</strong> creating a class,
+          initializing attributes and defining methods that change an object's
+          state.
+        </li>
+        <li>
+          <strong>Application structure:</strong> separating the main
+          Streamlit application, the Tamagotchi class, helper functions
+          and configuration into different files.
+        </li>
+        <li>
+          <strong>State management:</strong> using Streamlit session state
+          to keep the pet and game information between reruns.
+        </li>
+        <li>
+          <strong>Interactive logic:</strong> implementing actions, random
+          outcomes, difficulty levels and game-over conditions.
+        </li>
+        <li>
+          <strong>Visualization:</strong> using Plotly to display current
+          needs and track how they change throughout the game.
+        </li>
+      </ul>
+
+      <div class="code-note">
+        <strong>The main takeaway</strong>
+        <p>
+          This project helped me understand how classes can represent
+          something with its own data, behavior and rules. It also gave me
+          hands-on practice connecting Python logic to an interactive
+          interface with Streamlit.
+        </p>
+      </div>
+
+      <h2>05. Explore the game</h2>
+      <p>
+        You can try the deployed version or browse the source code on GitHub.
+        The repository includes the main application, the Tamagotchi class,
+        helper functions, configuration, assets and instructions for running
+        the game locally.
+      </p>
+
+      <div class="actions">
+        <a class="btn btn-primary"
+           href="https://tamagotchi-amg.streamlit.app/"
+           target="_blank" rel="noopener noreferrer">
+          Play the game ↗
+        </a>
+        <a class="btn btn-outline"
+           href="https://github.com/mgalvaro/tamagotchi"
+           target="_blank" rel="noopener noreferrer">
+          View code on GitHub ↗
+        </a>
+      </div>
+
+      <p class="muted">
+        A small project built to learn by coding, experimenting and keeping
+        a virtual pet alive.
+      </p>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© 2026 Álvaro Mejía</span>
+      <a href="../index.html">Back home ↑</a>
+    </div>
+  </footer>
+
+</body>
+</html>
+```
