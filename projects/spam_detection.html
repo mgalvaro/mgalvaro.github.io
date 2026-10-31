@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0b0f">
+  <meta name="description" content="A machine learning project exploring spam email detection with a focus on minimizing false positives.">
+  <title>Spam Email Detection | Álvaro Mejía</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <nav class="container nav-inner" aria-label="Main navigation">
+      <a class="logo" href="../index.html">AM<span>.</span></a>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a class="active" href="../projects.html">Projects</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <article class="article">
+      <a href="../projects.html">← Back to projects</a>
+
+      <p>
+        <span class="tag">Machine Learning</span>
+        <span class="tag">Python</span>
+        <span class="tag">NLP</span>
+        <span class="tag">Classification</span>
+      </p>
+
+      <h1>Spam Email <span class="gradient-text">Detection.</span></h1>
+
+      <p>
+        A machine learning project focused on identifying spam emails
+        while minimizing the risk of legitimate messages being
+        incorrectly classified as spam.
+      </p>
+
+      <p class="muted">
+        Data Science Bootcamp Project · Python · Scikit-learn
+      </p>
+
+      <h2>01. The problem</h2>
+
+      <p>
+        Spam detection is a common classification problem, but not all
+        classification errors have the same consequences.
+      </p>
+
+      <p>
+        In this project, the main objective was not simply to maximize
+        overall accuracy. I wanted to build a model capable of detecting
+        unwanted emails while ensuring that fewer than 1% of legitimate
+        emails were incorrectly classified as spam.
+      </p>
+
+      <p>
+        This requirement makes false positives particularly important:
+        an incorrectly classified legitimate email could end up in the
+        spam folder, causing the user to miss an important message.
+      </p>
+
+      <h2>02. The dataset</h2>
+
+      <p>
+        The project uses a labelled dataset of email messages divided
+        into two categories:
+      </p>
+
+      <ul>
+        <li><strong>Legitimate (0):</strong> Regular email messages.</li>
+        <li><strong>Spam (1):</strong> Unwanted or unsolicited emails.</li>
+      </ul>
+
+      <p>
+        I started by exploring the dataset and examining the distribution
+        of the target variable. This initial analysis helped identify
+        the class imbalance and provided context for the modelling
+        and evaluation stages.
+      </p>
+
+      <h2>03. Methodology</h2>
+
+      <p>
+        The project followed a series of steps, starting with text
+        exploration and ending with an independently evaluated
+        classification pipeline.
+      </p>
+
+      <h3>Text preprocessing</h3>
+
+      <p>
+        Email messages contain a considerable amount of textual noise.
+        To prepare the data, I implemented a preprocessing function
+        including:
+      </p>
+
+      <ul>
+        <li>Converting text to lowercase.</li>
+        <li>Replacing URLs and email addresses with standard tokens.</li>
+        <li>Removing punctuation, numbers and special characters.</li>
+        <li>Removing English stopwords.</li>
+        <li>Applying lemmatization using NLTK.</li>
+        <li>Removing the "subject" prefix when it appears at the beginning of a message.</li>
+      </ul>
+
+      <h3>Feature extraction</h3>
+
+      <p>
+        I used <strong>CountVectorizer</strong> to convert email text
+        into numerical features using a Bag-of-Words representation.
+        The vocabulary was limited to 1,000 features to keep the model
+        relatively lightweight.
+      </p>
+
+      <h3>Model training</h3>
+
+      <p>
+        The selected classifier was a
+        <strong>Random Forest Classifier</strong> from Scikit-learn.
+        I also experimented with different vocabulary sizes and
+        class weights to explore their impact on performance.
+      </p>
+
+      <p>
+        The final implementation uses a Scikit-learn Pipeline to combine
+        text preprocessing, vectorization and classification into
+        a single workflow.
+      </p>
+
+      <h3>Threshold selection and evaluation</h3>
+
+      <p>
+        Instead of relying on the default probability threshold of 0.5,
+        I evaluated different thresholds to find a better balance
+        between false positives and spam detection.
+      </p>
+
+      <p>
+        I used separate training, threshold-selection and final
+        evaluation subsets. The threshold was selected using the
+        development data, while the final evaluation was performed
+        on a separate holdout set.
+      </p>
+
+      <p>
+        The main evaluation metrics were the False Positive Rate (FPR),
+        Spam Recall, Accuracy, Precision and F1-score.
+      </p>
+
+      <h2>04. Results</h2>
+
+      <p>
+        The final model was evaluated on an independent holdout set
+        containing 1,035 emails: 735 legitimate messages and 300 spam
+        messages.
+      </p>
+
+      <p>
+        A probability threshold of 0.65 achieved the following results:
+      </p>
+
+      <ul>
+        <li><strong>False Positive Rate:</strong> 0.82%</li>
+        <li><strong>Spam Recall:</strong> 80.00%</li>
+        <li><strong>Accuracy:</strong> 93.62%</li>
+        <li><strong>Decision threshold:</strong> 0.65</li>
+      </ul>
+
+      <div class="code-note">
+        <strong>Key takeaway</strong>
+        <p>
+          The model achieved the main project objective on the
+          independent evaluation set, keeping the False Positive Rate
+          below 1%.
+        </p>
+        <p>
+          This came with a trade-off: the model detected 80% of spam
+          messages, meaning that some unwanted emails were still
+          classified as legitimate.
+        </p>
+        <p>
+          The experiment highlights why accuracy alone is not enough
+          when evaluating a classification model. The choice of
+          evaluation metrics and decision threshold should reflect
+          the actual cost of different types of errors.
+        </p>
+      </div>
+
+      <h2>05. What I learned</h2>
+
+      <p>
+        This project helped me understand several important aspects
+        of practical machine learning, particularly when working
+        with text data.
+      </p>
+
+      <ul>
+        <li>
+          How to transform unstructured text into numerical features
+          using Bag of Words.
+        </li>
+        <li>
+          How preprocessing techniques can help prepare text for
+          machine learning algorithms.
+        </li>
+        <li>
+          Why a confusion matrix and class-specific metrics are
+          important when evaluating classification models.
+        </li>
+        <li>
+          How changing the decision threshold affects the balance
+          between false positives and recall.
+        </li>
+        <li>
+          How Scikit-learn Pipelines can combine preprocessing,
+          feature extraction and model training into a reusable workflow.
+        </li>
+      </ul>
+
+      <h3>Future improvements</h3>
+
+      <p>
+        There are several ways this project could be extended:
+      </p>
+
+      <ul>
+        <li>Compare Random Forest with other models.</li>
+        <li>Experiment with TF-IDF instead of Bag of Words.</li>
+        <li>Perform more systematic hyperparameter tuning.</li>
+        <li>Evaluate the stability of the False Positive Rate across different datasets.</li>
+        <li>Build a simple interactive email classification application using Streamlit.</li>
+      </ul>
+
+      <h2>06. Explore the code</h2>
+
+      <p>
+        The repository contains the Jupyter Notebook with the
+        exploratory analysis, text preprocessing, model training
+        and evaluation process.
+      </p>
+
+      <p>
+        You can explore the code and review the implementation
+        on GitHub.
+      </p>
+
+      <div class="actions">
+        <a class="btn btn-primary"
+           href="https://github.com/mgalvaro"
+           target="_blank" rel="noopener noreferrer">
+          View code on GitHub ↗
+        </a>
+        <a class="btn btn-outline" href="../projects.html">
+          All projects
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© 2026 Álvaro Mejía</span>
+      <a href="../index.html">Back home ↑</a>
+    </div>
+  </footer>
+
+</body>
+</html>
